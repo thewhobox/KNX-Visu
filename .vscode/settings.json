@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "ui_helpers.h": "c",
+        "ui.h": "c",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "*.tcc": "cpp",
+        "algorithm": "cpp",
+        "stop_token": "cpp"
+    }
+}
