@@ -11,8 +11,8 @@ ui_Dimm = lv_obj_create(NULL);
 lv_obj_clear_flag( ui_Dimm, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 
 ui_Value = lv_arc_create(ui_Dimm);
-lv_obj_set_width( ui_Value, 240);
-lv_obj_set_height( ui_Value, 240);
+lv_obj_set_width( ui_Value, 200);
+lv_obj_set_height( ui_Value, 200);
 lv_obj_set_align( ui_Value, LV_ALIGN_CENTER );
 
 lv_obj_set_style_arc_width(ui_Value, 20, LV_PART_INDICATOR| LV_STATE_DEFAULT);

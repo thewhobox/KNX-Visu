@@ -35,6 +35,7 @@ extern lv_obj_t *ui_LabelValue;
 void ui_Screen1_screen_init(void);
 extern lv_obj_t *ui_Screen1;
 extern lv_obj_t *ui_Colorwheel1;
+extern lv_obj_t *ui_Label2;
 // SCREEN: ui_Screen2
 void ui_Screen2_screen_init(void);
 extern lv_obj_t *ui_Screen2;
