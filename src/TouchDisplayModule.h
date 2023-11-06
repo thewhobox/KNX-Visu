@@ -5,7 +5,7 @@
 #define EXT2_PIN 29
 
 #define DISPLAY_SLEEP_DELAY 10000
-#define VISU_MAX_PAGE 3
+#define VISU_MAX_PAGE 5
 
 class TouchDisplayModule : public OpenKNX::Module
 {
@@ -31,9 +31,10 @@ class TouchDisplayModule : public OpenKNX::Module
 
 		static void lv_log(const char * buf);
 		static void changeScreen(lv_event_t * event);
-		static void ui_Main_event(lv_event_t * event);
 		static void display_pressed();
 		static void setTextForChannel(int index);
+		static bool checkPageActive(int index);
+		static void loadPage(int index);
 
 		inline static lv_obj_t* screenTypes[VISU_MAX_PAGE];
 		inline static lv_obj_t* screenLabels[VISU_MAX_PAGE];

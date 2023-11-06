@@ -31,6 +31,12 @@ lv_obj_t *ui_Screen2;
 void ui_event_Slider1( lv_event_t * e);
 lv_obj_t *ui_Slider1;
 lv_obj_t *ui_Label1;
+
+
+// SCREEN: ui_Screen3
+void ui_Screen3_screen_init(void);
+lv_obj_t *ui_Screen3;
+lv_obj_t *ui_Label3;
 lv_obj_t *ui____initial_actions0;
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
@@ -67,6 +73,7 @@ lv_disp_set_theme(dispp, theme);
 ui_Dimm_screen_init();
 ui_Screen1_screen_init();
 ui_Screen2_screen_init();
+ui_Screen3_screen_init();
 ui____initial_actions0 = lv_obj_create(NULL);
 lv_disp_load_scr( ui_Dimm);
 }
