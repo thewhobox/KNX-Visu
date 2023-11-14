@@ -10,8 +10,10 @@
 class TouchDisplayModule : public OpenKNX::Module
 {
 	public:
-		void loop() override;
-		void setup() override;
+		void loop(bool configured) override;
+		void setup(bool configured) override;
+		void loop1(bool configured) override;
+		void setup1(bool configured) override;
 		void processAfterStartupDelay() override;
 		void processInputKo(GroupObject &ko) override;
 

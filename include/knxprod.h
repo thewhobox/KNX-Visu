@@ -5,12 +5,12 @@
             (time & 0xC000) == 0x0000 ? (time & 0x3FFF) * 1000 : \
             (time & 0xC000) == 0x4000 ? (time & 0x3FFF) * 60000 : \
             (time & 0xC000) == 0x8000 ? ((time & 0x3FFF) > 1000 ? 3600000 : \
-                                         (time & 0x3FFF) * 3600000 ) : 0 )
+                                            (time & 0x3FFF) * 3600000 ) : 0 )
 //--------------------Allgemein---------------------------
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 0x02
-#define MAIN_ApplicationVersion 0x02
-#define MAIN_OrderNumber "VIS-UP-RoundMini" //may not work with multiple devices on same hardware or app on different hardware
+#define MAIN_ApplicationVersion 0x05
+#define MAIN_OrderNumber "VIS-UP-RoundMini"
 #define MAIN_ParameterSize 80
 #define MAIN_MaxKoNumber 4
 

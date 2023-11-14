@@ -13,7 +13,11 @@ const std::string TouchDisplayModule::version()
     return "0.0dev";
 }
 
-void TouchDisplayModule::setup()
+void TouchDisplayModule::setup(bool configured)
+{
+
+}
+void TouchDisplayModule::setup1(bool configured)
 {
     TouchDisplayModule::doorState = DoorState::UNDEFINED;
     TouchDisplayModule::displayOn = true;
@@ -34,6 +38,7 @@ void TouchDisplayModule::setup()
     ui_Dimm_screen_init();
     ui_Screen1_screen_init();
     ui_Screen2_screen_init();
+    ui_Screen3_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
 
     lv_obj_add_event_cb(ui_Dimm, changeScreen, LV_EVENT_GESTURE, NULL);
@@ -44,27 +49,28 @@ void TouchDisplayModule::setup()
     screenTypes[1] = ui_Dimm;
     screenTypes[2] = ui_Screen1;
     screenTypes[3] = ui_Screen2;
-    screenInits[0] = &ui_Screen2_screen_init;
-    screenInits[1] = &ui_Dimm_screen_init;
-    screenInits[2] = &ui_Screen1_screen_init;
-    screenInits[3] = &ui_Screen2_screen_init;
+    // screenInits[0] = &ui_Screen2_screen_init;
+    // screenInits[1] = &ui_Dimm_screen_init;
+    // screenInits[2] = &ui_Screen1_screen_init;
+    // screenInits[3] = &ui_Screen2_screen_init;
     screenLabels[0]= ui_Label1;
     screenLabels[1]= ui_LabelName;
     screenLabels[2]= ui_Label2;
     screenLabels[3]= ui_Label1;
 
-    setTextForChannel(0);
-
     bool flag = false;
-    for(int i = 0; i < VISU_MAX_PAGE; i++)
+    if(configured)
     {
-        if(checkPageActive(i))
+        for(int i = 0; i < 2; i++)
         {
-            flag = true;
-            loadPage(i);
-            currentScreen = screenTypes[ParamPAGE_typeIndex(i)-1];
-            TouchDisplayModule::currentScreenIndex = i;
-            break;
+            if(checkPageActive(i))
+            {
+                flag = true;
+                loadPage(i);
+                currentScreen = screenTypes[ParamPAGE_typeIndex(i)-1];
+                TouchDisplayModule::currentScreenIndex = i;
+                break;
+            }
         }
     }
 
@@ -77,14 +83,15 @@ void TouchDisplayModule::setup()
     }
     else
     {
-        screenInits[TouchDisplayModule::currentScreenIndex]();
-        lv_disp_load_scr(currentScreen);
+        logErrorP("Found Page %i", TouchDisplayModule::currentScreenIndex);
+        loadPage(TouchDisplayModule::currentScreenIndex);
     }
+
 }
 
 void TouchDisplayModule::lv_log(const char * buf)
 {
-    logDebug("lvgl", buf);
+//     logDebug("lvgl", buf);
 }
 
 void TouchDisplayModule::changeScreen(lv_event_t * event)
@@ -131,18 +138,23 @@ void TouchDisplayModule::loadPage(int channel)
 
 bool TouchDisplayModule::checkPageActive(int channel)
 {
-    return ParamPAGE_typeIndex(channel) != 0;
+     return ParamPAGE_typeIndex(channel) != 0;
 }
 
 void TouchDisplayModule::setTextForChannel(int channel)
 {
-    uint8_t *display = ParamPAGE_displayIndex(channel);
-    lv_label_set_text(screenLabels[channel], (char*)display);
+    char *display = (char*)ParamPAGE_displayIndex(channel);
+    println(display);
+    lv_label_set_text(screenLabels[channel], display);
 }
 
 uint32_t last_lv_handler = 0;
 
-void TouchDisplayModule::loop()
+void TouchDisplayModule::loop(bool configured)
+{
+
+}
+void TouchDisplayModule::loop1(bool configured)
 {
     if(millis() - last_lv_handler > 5)
     {
@@ -150,11 +162,11 @@ void TouchDisplayModule::loop()
         last_lv_handler = millis();
     }
 
-    if (TouchDisplayModule::currentScreenIndex != 255 && TouchDisplayModule::displayOn && (millis() - TouchDisplayModule::lastPressed > DISPLAY_SLEEP_DELAY)) {
-        logDebugP("Turn display off.");
-        TouchDisplayModule::displayOn = false;
-        digitalWrite(XIAO_BL, LOW);
-    }
+    // if (TouchDisplayModule::currentScreenIndex != 255 && TouchDisplayModule::displayOn && (millis() - TouchDisplayModule::lastPressed > DISPLAY_SLEEP_DELAY)) {
+    //     logDebugP("Turn display off.");
+    //     TouchDisplayModule::displayOn = false;
+    //     digitalWrite(XIAO_BL, LOW);
+    // }
 }
 
 void TouchDisplayModule::processInputKo(GroupObject& iKo)

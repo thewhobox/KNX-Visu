@@ -8,15 +8,21 @@ void setup()
     openknx.init(firmwareRevision);
     openknx.addModule(1, new TouchDisplayModule());
     openknx.setup();
-
-    // call direct for testing without KNX connected
-    openknx.modules.list[0]->setup();
 }
 
 void loop()
 {
 	openknx.loop();
-
-    // call direct for testing without KNX connected
-    openknx.modules.list[0]->loop();
 }
+
+#ifdef OPENKNX_DUALCORE
+void setup1()
+{
+    openknx.setup1();
+}
+
+void loop1()
+{
+    openknx.loop1();
+}
+#endif
