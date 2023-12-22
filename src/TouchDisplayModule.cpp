@@ -148,19 +148,13 @@ void TouchDisplayModule::setTextForChannel(int channel)
     lv_label_set_text(screenLabels[channel], display);
 }
 
-uint32_t last_lv_handler = 0;
-
 void TouchDisplayModule::loop(bool configured)
 {
 
 }
 void TouchDisplayModule::loop1(bool configured)
 {
-    if(millis() - last_lv_handler > 5)
-    {
-        lv_timer_handler();  //let the GUI do its work 
-        last_lv_handler = millis();
-    }
+    lv_timer_handler();  //let the GUI do its work 
 
     // if (TouchDisplayModule::currentScreenIndex != 255 && TouchDisplayModule::displayOn && (millis() - TouchDisplayModule::lastPressed > DISPLAY_SLEEP_DELAY)) {
     //     logDebugP("Turn display off.");
