@@ -43,6 +43,10 @@ void TouchDisplayModule::setup1(bool configured)
     lv_obj_add_event_cb(ui_Color, handleGesture, LV_EVENT_GESTURE, NULL);
     lv_obj_add_event_cb(ui_DimmValue, handleValues, LV_EVENT_ALL, NULL);
 
+    _ui_flag_modify(ui_Value, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
+    _ui_flag_modify(ui_Colorwheel1, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
+    _ui_flag_modify(ui_Slider1, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
+    
     screenTypes[0] = ui_Switch;
     screenTypes[1] = ui_Dimm;
     screenTypes[2] = ui_Color;
@@ -184,15 +188,13 @@ void TouchDisplayModule::setTextForChannel(int channel)
     lv_label_set_text(screenLabels[channel], display);
 }
 
-uint32_t last_lv_handler = 0;
-
 void TouchDisplayModule::loop(bool configured)
 {
 
 }
 void TouchDisplayModule::loop1(bool configured)
 {
-    lv_timer_handler();
+    lv_timer_handler();  //let the GUI do its work 
 
     // if (TouchDisplayModule::currentScreenIndex != 255 && TouchDisplayModule::displayOn && (millis() - TouchDisplayModule::lastPressed > DISPLAY_SLEEP_DELAY)) {
     //     logDebugP("Turn display off.");
