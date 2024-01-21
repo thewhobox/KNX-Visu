@@ -43,9 +43,10 @@ void TouchDisplayModule::setup1(bool configured)
     lv_obj_add_event_cb(ui_Color, handleGesture, LV_EVENT_GESTURE, NULL);
     lv_obj_add_event_cb(ui_DimmValue, handleValues, LV_EVENT_ALL, NULL);
 
-    _ui_flag_modify(ui_Value, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
-    _ui_flag_modify(ui_Colorwheel1, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
-    _ui_flag_modify(ui_Slider1, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
+    _ui_flag_modify(ui_DimmValue, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
+    _ui_flag_modify(ui_Color, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
+    _ui_flag_modify(ui_Dimm, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
+    _ui_flag_modify(ui_Switch, LV_OBJ_FLAG_GESTURE_BUBBLE, _UI_MODIFY_FLAG_REMOVE);
     
     screenTypes[0] = ui_Switch;
     screenTypes[1] = ui_Dimm;
