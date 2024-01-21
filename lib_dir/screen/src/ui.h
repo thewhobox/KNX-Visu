@@ -27,24 +27,23 @@ extern "C" {
 // SCREEN: ui_Dimm
 void ui_Dimm_screen_init(void);
 extern lv_obj_t *ui_Dimm;
-void ui_event_Value( lv_event_t * e);
-extern lv_obj_t *ui_Value;
+void ui_event_DimmValue( lv_event_t * e);
+extern lv_obj_t *ui_DimmValue;
 extern lv_obj_t *ui_LabelName;
 extern lv_obj_t *ui_LabelValue;
-// SCREEN: ui_Screen1
-void ui_Screen1_screen_init(void);
-extern lv_obj_t *ui_Screen1;
-extern lv_obj_t *ui_Colorwheel1;
+// SCREEN: ui_Color
+void ui_Color_screen_init(void);
+extern lv_obj_t *ui_Color;
+extern lv_obj_t *ui_ColorValue;
 extern lv_obj_t *ui_Label2;
-// SCREEN: ui_Screen2
-void ui_Screen2_screen_init(void);
-extern lv_obj_t *ui_Screen2;
-void ui_event_Slider1( lv_event_t * e);
-extern lv_obj_t *ui_Slider1;
+// SCREEN: ui_Switch
+void ui_Switch_screen_init(void);
+extern lv_obj_t *ui_Switch;
 extern lv_obj_t *ui_Label1;
-// SCREEN: ui_Screen3
-void ui_Screen3_screen_init(void);
-extern lv_obj_t *ui_Screen3;
+extern lv_obj_t *ui_SwitchValue;
+// SCREEN: ui_Message
+void ui_Message_screen_init(void);
+extern lv_obj_t *ui_Message;
 extern lv_obj_t *ui_Label3;
 extern lv_obj_t *ui____initial_actions0;
 

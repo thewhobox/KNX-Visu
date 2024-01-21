@@ -5,12 +5,12 @@
 
 #include "../ui.h"
 
-void ui_Screen3_screen_init(void)
+void ui_Message_screen_init(void)
 {
-ui_Screen3 = lv_obj_create(NULL);
-lv_obj_clear_flag( ui_Screen3, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
+ui_Message = lv_obj_create(NULL);
+lv_obj_clear_flag( ui_Message, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 
-ui_Label3 = lv_label_create(ui_Screen3);
+ui_Label3 = lv_label_create(ui_Message);
 lv_obj_set_width( ui_Label3, LV_SIZE_CONTENT);  /// 1
 lv_obj_set_height( ui_Label3, LV_SIZE_CONTENT);   /// 1
 lv_obj_set_align( ui_Label3, LV_ALIGN_CENTER );

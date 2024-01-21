@@ -32,7 +32,9 @@ class TouchDisplayModule : public OpenKNX::Module
 		};
 
 		static void lv_log(const char * buf);
-		static void changeScreen(lv_event_t * event);
+		static void handleGesture(lv_event_t * event);
+		static void handleValues(lv_event_t * event);
+		static void resetDisplayTimeout();
 		static void display_pressed();
 		static void setTextForChannel(int index);
 		static bool checkPageActive(int index);
@@ -48,4 +50,7 @@ class TouchDisplayModule : public OpenKNX::Module
 		inline static DoorState doorState;
 		inline static bool displayOn;
 		inline static unsigned long lastPressed;
+		inline static bool isChangingValue = false;
+		inline static int16_t lastValue = 0;
+		inline static int16_t last2Value = 0;
 };
